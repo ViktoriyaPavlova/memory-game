@@ -51,7 +51,20 @@ const generateGame = () => {
 
   // Вставка карточек в игровое поле
   SELECTORS.board.insertAdjacentHTML("beforeend", cardsHTML);
-  console.log(cardsHTML);
 };
 
 generateGame();
+
+//Обработчик события клика по карточке
+const CARDS = SELECTORS.board.children;
+
+if (CARDS) {
+    // HTMLCollection в массив
+  [...CARDS].forEach((card) => {
+    // Добавление клика на отдельно взятую карточку
+    card.addEventListener("click", (event) => {
+      console.log(event.target);
+    });
+  });
+}
+
