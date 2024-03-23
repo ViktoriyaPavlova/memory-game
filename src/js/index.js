@@ -1,6 +1,28 @@
 const EMOJIS = ["🥔", "🍒", "🥑", "🌽", "🥕", "🍇", "🍉", "🍌", "🥭", "🍍"];
 
 /**
+ *
+ * @param {strings[]} items - Абстрактные данные для перемешивания и сортировки
+ * @returns {strings[]} - Перемешанный массив с данными
+ */
+
+function shuffleAndPickRandom(items) {
+  // Сортировка исходного массива в случайном порядке
+  const sortedArr = items.sort(() => Math.random(items) - 0.5);
+
+  // Достаем из 10 элементов первые 8
+  const dublicateArr = [...sortedArr].slice(0, 8);
+
+  // Из массива в 8 элементов делаем 16
+  const doubleArr = [...dublicateArr, ...dublicateArr];
+
+  // Сортировка массива из 16 элементов в случайном порядке
+  const sortedDoubleArr = doubleArr.sort(() => Math.random(doubleArr) - 0.5);
+
+  return sortedDoubleArr;
+}
+
+/**
  * Состояние игры
  * @property {boolean} isGameStarted- Игра началась или нет.
  * @property {number} totalTime - Общее время в игре.
@@ -59,7 +81,7 @@ generateGame();
 const CARDS = SELECTORS.board.children;
 
 if (CARDS) {
-    // HTMLCollection в массив
+  // HTMLCollection в массив
   [...CARDS].forEach((card) => {
     // Добавление клика на отдельно взятую карточку
     card.addEventListener("click", (event) => {
@@ -67,4 +89,3 @@ if (CARDS) {
     });
   });
 }
-
