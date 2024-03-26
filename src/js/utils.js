@@ -1,4 +1,5 @@
 import { STATE } from "./state.js";
+import { SELECTORS } from "./selectors.js";
 
 /**
  *
@@ -6,7 +7,7 @@ import { STATE } from "./state.js";
  * @returns {strings[]} - Перемешанный массив с данными.
  */
 
-export function shuffleAndPickRandom(items) {
+export const shuffleAndPickRandom = (items) => {
   if (!items && Array.isArray(items)) {
     throw new Error("Передайте эмодзи в виде массива!");
   }
